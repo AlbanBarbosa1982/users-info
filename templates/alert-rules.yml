@@ -1,0 +1,20 @@
+groups:
+  - name: kubernetes-monitoring
+    rules:
+      - alert: PodMemoryUsageHigh
+        expr: sum(container_memory_usage_bytes) > 90e6
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage in pod"
+          description: "Memory usage in pod {{ $labels.pod }} is above 90MB."
+
+      - alert: PodCPULoadHigh
+        expr: sum(rate(container_cpu_usage_seconds_total[5m])) > 1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU load in pod"
+          description: "CPU load in pod {{ $labels.pod }} is above 1 core."

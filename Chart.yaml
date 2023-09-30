@@ -1,0 +1,12 @@
+apiVersion: v2
+name: users-info
+version: 0.1.0
+description: A service that returns information about users.
+type: application
+appVersion: 1.0.0
+home: https://users-info.com
+sources:
+  - https://github.com/shuttle/users-info
+maintainers:
+  - name: Alban Barbosa
+    email: albanbarbosa@hotmail.com

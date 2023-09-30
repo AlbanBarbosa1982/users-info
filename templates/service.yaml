@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: users-info-service
+  labels:
+    app: users-info
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8008
+      targetPort: 8000
+  selector:
+    app: users-info

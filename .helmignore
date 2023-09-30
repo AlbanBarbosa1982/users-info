@@ -1,0 +1,15 @@
+# Ignore Helm's auto-generated files
+*.swp
+*.bak
+*.tmp
+
+# Ignore MacOS files
+.DS_Store
+
+# Ignore VS Code configuration files
+.vscode/
+
+# Ignore some logs and temp files
+logs/
+*.log
+.tmp/

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-info-deployment
+  labels:
+    app: user-info
+spec:
+  selector:
+    matchLabels:
+      app: user-info
+  template:
+    metadata:
+      labels:
+        app: user-info
+    spec:
+      containers:
+        - name: user-info-container
+          image: public.ecr.aws/shuttle-dev/auth:v0.25.0
+          ports:
+            - containerPort: 8000
+          env:
+            - name: RUST_LOG
+              value: "debug,shuttle=trace,h2=warn"
+          command:
+            - "--state=/var/lib/shuttle-auth"
+            - "start"
+            - "--address=0.0.0.0:8000"
+        - name: fluentbit
+          image: fluent/fluent-bit:latest
+          volumeMounts:
+          - name: fluent-bit-config
+            mountPath: /fluent-bit/etc/
+      volumes:
+        - name: fluent-bit-config
+          configMap:
+            name: fluent-bit-config

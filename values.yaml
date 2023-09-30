@@ -1,0 +1,32 @@
+# Application configurations
+appName: users-info
+appVersion: 1.0.0
+replicaCount: 1
+
+# Image configurations
+image:
+  repository: users-info
+  tag: latest
+  pullPolicy: IfNotPresent
+
+# Service configurations
+service:
+  type: ClusterIP
+  port: 80
+
+# Ingress configurations
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: user-info.local
+      paths: ["/"]
+
+# Resource limits and requests
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "250m"
+  limits:
+    memory: "256Mi"
+    cpu: "500m"

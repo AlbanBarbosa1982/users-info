@@ -1,0 +1,25 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    app: users-info
+
+scrape_configs:
+  - job_name: 'users-info'
+    static_configs:
+      - targets: ['users-info-service:8008'] 
+    metrics_path: /metrics
+
+  - job_name: 'kubernetes'
+    static_configs:
+      - targets: ['your-kubelet-host:10250'] 
+    metrics_path: /metrics/cadvisor
+
+rule_files:
+  - 'alert-rules.yml'  
+
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ['alertmanager:9093']  
