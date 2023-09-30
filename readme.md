@@ -48,7 +48,7 @@ To deploy the pods to EKS and to have some I propose the following structure in 
 |-- Chart.yaml             # Information about the Helm chart
 |-- values.yaml            # Default configuration file 
 |-- README.md              # README with information about your chart and its values
-|-- LICENSE                # License of your Helm chart```
+|-- LICENSE                # License of your Helm chart 
 
 This is boilerplate code and has not been tested on an actual EKS cluster. Also the files are example files to give a broad idea. For instance in the release.yaml there are plain secrets now which is a red flaf off course. Hashicorp vault operator or github actions secrets would allready be a much better idea.
 
