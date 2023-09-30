@@ -50,10 +50,12 @@ To deploy the pods to EKS and to have some I propose the following structure in 
 |-- README.md              # README with information about your chart and its values
 |-- LICENSE                # License of your Helm chart 
 
+```
+
 This is boilerplate code and has not been tested on an actual EKS cluster. Also the files are example files to give a broad idea. For instance in the release.yaml there are plain secrets now which is a red flaf off course. Hashicorp vault operator or github actions secrets would allready be a much better idea.
 
-Github link:
-https://github.com/AlbanBarbosa1982/users-info
+## Github link:
+[GitHub Repository](https://github.com/AlbanBarbosa1982/users-info)
 
 ### Performance and scalabillity in depth solution
 To make sure the infra and the application can handle the load to the application I have include a service.yaml file which creates a loadbalancer that can distribute external traffic to the pods running behind the service.
